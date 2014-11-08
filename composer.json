@@ -1,6 +1,6 @@
 {
     "name": "kartik-v/yii2-widget-depdrop",
-    "description": "Widget that enables setting up dependent dropdowns with nested dependencies (sub repo split from yii2-widgets).",
+    "description": "Widget that enables setting up dependent dropdowns with nested dependencies (sub repo split from yii2-widgets)",
     "keywords": ["yii2", "extension", "widget", "dependent", "dropdown", "form", "jquery", "plugin"],
     "homepage": "https://github.com/kartik-v/yii2-widget-depdrop",
     "type": "yii2-extension",
