@@ -7,7 +7,7 @@
  * @version 1.0.0
  */
 
-namespace kartik\widgets;
+namespace kartik\depdrop;
 
 /**
  * Asset bundle for Dependent Dropdown widget
