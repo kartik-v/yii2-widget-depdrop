@@ -11,6 +11,8 @@ namespace kartik\depdrop;
 
 use yii\helpers\ArrayHelper;
 use yii\base\InvalidConfigException;
+use kartik\base\Config;
+use kartik\select2\Select2;
 
 /**
  * Dependent Dropdown widget is a wrapper widget for the dependent-dropdown
@@ -60,6 +62,9 @@ class DepDrop extends \kartik\base\InputWidget
         }
         if (empty($this->options['class'])) {
             $this->options['class'] = 'form-control';
+        }
+        if ($this->type === self::TYPE_SELECT2) {
+            Config::checkDependency('select2\Select2', 'yii2-widget-select2', 'for dependent dropdown for TYPE_SELECT2');
         }
         parent::init();
         if ($this->type !== self::TYPE_SELECT2 && !empty($this->options['placeholder'])) {
