@@ -48,8 +48,7 @@ class DepDrop extends \kartik\base\InputWidget
     private $_view;
 
     /**
-     * Initializes the widget
-     *
+     * @inherit doc
      * @throw InvalidConfigException
      */
     public function init()
