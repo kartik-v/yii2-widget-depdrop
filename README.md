@@ -1,6 +1,12 @@
 yii2-widget-depdrop
 ===================
 
+[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/v/stable.svg)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
+[![License](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/license.svg)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
+[![Total Downloads](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/downloads.svg)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
+[![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/d/monthly.png)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
+[![Daily Downloads](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/d/daily.png)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
+
 The DepDrop widget is a Yii 2 wrapper for the [dependent-dropdown jQuery plugin by Krajee](http://plugins.krajee.com/dependent-dropdown). This plugin allows multi level dependent dropdown with nested dependencies. The plugin thus enables to convert normal select inputs to a dependent input field, whose options are derived based on value selected in another input/or a group of inputs. It works both with normal select options and select with optgroups as well.
 
 > NOTE: This extension is a sub repo split of [yii2-widgets](https://github.com/kartik-v/yii2-widgets). The split has been done since 08-Nov-2014 to allow developers to install this specific widget in isolation if needed. One can also use the extension the previous way with the whole suite of [yii2-widgets](http://demos.krajee.com/widgets).
