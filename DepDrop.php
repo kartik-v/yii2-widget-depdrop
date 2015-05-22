@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
  * @package yii2-widgets
  * @subpackage yii2-widget-depdrop
- * @version 1.0.0
+ * @version 1.0.1
  */
 
 namespace kartik\depdrop;
@@ -22,7 +22,7 @@ use kartik\select2\Select2;
  * @see http://plugins.krajee.com/dependent-dropdown
  * @see http://github.com/kartik-v/dependent-dropdown
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0.0
+ * @since 1.0.1
  */
 class DepDrop extends \kartik\base\InputWidget
 {
@@ -41,11 +41,6 @@ class DepDrop extends \kartik\base\InputWidget
      * only if the `type` property is set to [[DepDrop::TYPE_SELECT2]].
      */
     public $select2Options = [];
-
-    /**
-     * @var \yii\web\View instance
-     */
-    private $_view;
 
     /**
      * @inherit doc
@@ -69,44 +64,7 @@ class DepDrop extends \kartik\base\InputWidget
         if ($this->type !== self::TYPE_SELECT2 && !empty($this->options['placeholder'])) {
             $this->data = ['' => $this->options['placeholder']] + $this->data;
         }
-        if ($this->type === self::TYPE_SELECT2 &&
-            (!empty($this->options['placeholder']) || !empty($this->select2Options['options']['placeholder']))
-        ) {
-            $this->pluginOptions['placeholder'] = '';
-        } elseif ($this->type === self::TYPE_SELECT2 && !empty($this->pluginOptions['placeholder']) && $this->pluginOptions['placeholder'] !== false) {
-            $this->options['placeholder'] = $this->pluginOptions['placeholder'];
-            $this->pluginOptions['placeholder'] = '';
-        }
-        $this->_view = $this->getView();
         $this->registerAssets();
-        if ($this->type === self::TYPE_SELECT2) {
-            if (empty($this->data)) {
-                $this->data = ['' => ''];
-            }
-            if ($this->hasModel()) {
-                $settings = ArrayHelper::merge($this->select2Options, [
-                    'model' => $this->model,
-                    'attribute' => $this->attribute,
-                    'data' => $this->data,
-                    'options' => $this->options
-                ]);
-            } else {
-                $settings = ArrayHelper::merge($this->select2Options, [
-                    'name' => $this->name,
-                    'value' => $this->value,
-                    'data' => $this->data,
-                    'options' => $this->options
-                ]);
-            }
-            echo Select2::widget($settings);
-
-            $id = 'jQuery("#' . $this->options['id'] . '")';
-            $text = ArrayHelper::getValue($this->pluginOptions, 'loadingText', 'Loading ...');
-            $this->_view->registerJs("{$id}.on('depdrop.beforeChange',function(e,i,v){{$id}.select2('data',{text: '{$text}'});});");
-            $this->_view->registerJs("{$id}.on('depdrop.change',function(e,i,v,c){{$id}.select2('val',{$id}.val());});");
-        } else {
-            echo $this->getInput('dropdownList', true);
-        }
     }
 
     /**
@@ -114,8 +72,31 @@ class DepDrop extends \kartik\base\InputWidget
      */
     public function registerAssets()
     {
-        DepDropAsset::register($this->_view);
+        $view = $this->getView();
+        DepDropAsset::register($view);
+        DepDropExtAsset::register($view);
         $this->registerPlugin('depdrop');
+        if ($this->type === self::TYPE_SELECT2) {
+            $loading = ArrayHelper::getValue($this->pluginOptions, 'loadingText', 'Loading ...');
+            $this->select2Options['data'] = $this->data;
+            $this->select2Options['options'] = $this->options;
+            if ($this->hasModel()) {
+                $settings = ArrayHelper::merge($this->select2Options, [
+                    'model' => $this->model,
+                    'attribute' => $this->attribute
+                ]);
+            } else {
+                $settings = ArrayHelper::merge($this->select2Options, [
+                    'name' => $this->name,
+                    'value' => $this->value
+                ]);
+            }
+            echo Select2::widget($settings);
+            $id = $this->options['id'];
+            $view->registerJs("initDepdropS2('{$id}','{$loading}');");
+        } else {
+            echo $this->getInput('dropdownList', true);
+        }
     }
 
 }

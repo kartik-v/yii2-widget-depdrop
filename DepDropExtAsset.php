@@ -10,19 +10,19 @@
 namespace kartik\depdrop;
 
 /**
- * Asset bundle for Dependent Dropdown widget
+ * Asset bundle for Dependent Dropdown Extension for Yii
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
  * @since 1.0
  */
-class DepDropAsset extends \kartik\base\AssetBundle
+class DepDropExtAsset extends \kartik\base\AssetBundle
 {
 
     public function init()
     {
-        $this->setSourcePath('@vendor/kartik-v/dependent-dropdown');
-        $this->setupAssets('css', ['css/dependent-dropdown']);
-        $this->setupAssets('js', ['js/dependent-dropdown']);
+        $this->setSourcePath(__DIR__ . '/assets');
+        $this->setupAssets('js', ['js/depdrop']);
         parent::init();
     }
+
 }

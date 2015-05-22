@@ -4,7 +4,7 @@
     "keywords": ["yii2", "extension", "widget", "dependent", "dropdown", "form", "jquery", "plugin"],
     "homepage": "https://github.com/kartik-v/yii2-widget-depdrop",
     "type": "yii2-extension",
-    "license": "BSD 3-Clause",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Kartik Visweswaran",
