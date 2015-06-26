@@ -1,8 +1,9 @@
 version 1.0.2
 =============
-**Date:** 04-Jun-2015
+**Date:** 26-Jun-2015
 
 - (enh #17): Tighter integration for Select2 widget on clear.
+- Set composer dependencies.
 
 version 1.0.1
 =============
