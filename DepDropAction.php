@@ -28,13 +28,29 @@ use yii\web\Response;
  *                'outputFunction' => function ($selectedId, $params) {
  *                    return [
  *                        [
- *                            'id'=>$selectedId,
- *                            'name'=>'name'.$selectedId,
+ *                            'id'=>1,
+ *                            'name'=>'Car',
  *                        ],
  *                        [
- *                            'id'=>333333,
- *                            'name'=>'333333',
+ *                            'id'=>2,
+ *                            'name'=>'bike',
  *                        ],
+ *                    ];
+ *
+ *                     // return self::getSubCategory($selectedId);
+ *
+ *
+ *
+ *                     //with group
+ *                    return [
+ *                        'group1'=>[
+ *                            ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
+ *                            ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
+ *                        ],
+ *                        'group2'=>[
+ *                            ['id'=>'<sub-cat-id-3>', 'name'=>'<sub-cat-name3>'],
+ *                            ['id'=>'<sub-cat-id-4>', 'name'=>'<sub-cat-name4>']
+ *                        ]
  *                    ];
  *                }
  *            ]
