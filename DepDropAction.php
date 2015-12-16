@@ -1,31 +1,33 @@
 <?php
 
+/**
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
+ * @package yii2-widgets
+ * @subpackage yii2-widget-depdrop
+ * @version 1.0.3
+ */
+
 namespace kartik\depdrop;
 
 use Yii;
+use Closure;
 use yii\base\Action;
-use yii\base\InvalidConfigException;
-use yii\helpers\Json;
 use yii\web\Response;
 
 /**
- * Class DepDropAction
- * @package kartik\depdrop
- *
- *
- *
- *  * A typical usage  is like the following:
+ * Dependent Dropdown action that can be used to generate the dependent option values via ajax response. A typical
+ * usage of this action in your controller could look like the below:
  *
  * ```php
  *
- *    //inside controller
+ *   //inside the controller
  *
  *    public function actions()
  *    {
  *        return \yii\helpers\ArrayHelper::merge(parent::actions(), [
  *            'subcategory' => [
  *                'class' => \kartik\depdrop\DepDropAction::className(),
- *                'outputFunction' => function ($selectedId, $params) {
+ *                'outputCallback' => function ($selectedId, $params) {
  *                    return [
  *                        [
  *                            'id'=>1,
@@ -37,11 +39,7 @@ use yii\web\Response;
  *                        ],
  *                    ];
  *
- *                     // return self::getSubCategory($selectedId);
- *
- *
- *
- *                     //with group
+ *                    // with optgroup
  *                    return [
  *                        'group1'=>[
  *                            ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
@@ -58,80 +56,94 @@ use yii\web\Response;
  *    }
  * ```
  *
+ * @see http://plugins.krajee.com/dependent-dropdown
+ * @see http://github.com/kartik-v/dependent-dropdown
+ *
+ * @author Kartik Visweswaran <kartikv2@gmail.com>
+ * @since 1.0.3
  *
  */
 class DepDropAction extends Action
 {
+    /**
+     * @var string parent parameter name for the dependent dropdown
+     */
+    public $parentParam = 'depdrop_parents';
 
     /**
-     *
+     * @var string other parameter name for the dependent dropdown
      */
-    const MAIN_PARAM = 'depdrop_parents';
-    /**
-     *
-     */
-    const OTHER_PARAMS = 'depdrop_params';
-    /**
-     * @var
-     */
-    public $outputFunction;
-    /**
-     * @var
-     */
-    public $selectedFunction;
+    public $otherParam = 'depdrop_params';
 
     /**
-     * @throws InvalidConfigException
+     * @var Closure the output callback function
      */
-    public function init()
-    {
-        parent::init();
-        if (!is_callable($this->outputFunction)) {
-            throw new InvalidConfigException('outputFunction must be callable');
-        }
-    }
+    public $outputCallback;
 
     /**
-     * Runs the action.
+     * @var Closure the selected callback function
+     */
+    public $selectedCallback;
+
+    /**
+     * @inheritdoc
      */
     public function run()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
-
-        if ($selected = Yii::$app->getRequest()->post(self::MAIN_PARAM)) {
-            if ($selected) {
-                $selectedId = $selected[0];
-                $params = Yii::$app->getRequest()->post(self::OTHER_PARAMS, []);
-                return ['output' => $this->getOutput($selectedId,$params), 'selected' => $this->getSelected($selectedId,$params)];
-            }
+        $request = Yii::$app->getRequest();
+        if (($selected = $request->post($this->parentParam)) && is_array($selected) && !empty($selected[0])) {
+            $params = $request->post($this->otherParam, []);
+            $id = $selected[0];
+            return ['output' => $this->getOutput($id, $params), 'selected' => $this->getSelected($id, $params)];
         }
-        return Json::encode(['output' => '', 'selected' => '']);
+        return ['output' => '', 'selected' => ''];
     }
 
     /**
-     * @param $id
-     * @param $params
-     * @return mixed
+     * Return select option values output
+     *
+     * @param string $id the selected value identifier
+     * @param array  $params the parameters passed
+     *
+     * @return mixed the option values
      */
-    private function getOutput($id, $params)
+    protected function getOutput($id, $params = [])
     {
-        $outputFunction = $this->outputFunction;
-        return $outputFunction($id,$params);
+        return $this->parseCallback('outputCallback', $id, $params);
     }
 
     /**
-     * @param $id
-     * @param $params
-     * @return string
+     * Return selected value
+     *
+     * @param string $id the selected value identifier
+     * @param array  $params the parameters passed
+     *
+     * @return string the selected value
      */
-    private function getSelected($id, $params)
+    protected function getSelected($id, $params = [])
     {
-        $selectedFunction = $this->selectedFunction;
-        if (is_callable($selectedFunction)) {
-            return $selectedFunction($id,$params);
+        return $this->parseCallback('selectedCallback', $id, $params);
+    }
+
+    /**
+     * Parses the callback function name and if callable, executes it to return value
+     *
+     * @param string $funcName the function name
+     * @param string $id the selected value identifier
+     * @param array  $params the parameters passed
+     *
+     * @return mixed the parsed value
+     */
+    protected function parseCallback($funcName, $id, $params = [])
+    {
+        if (!isset($this->$funcName)) {
+            return '';
+        }
+        $func = $this->$funcName;
+        if (is_callable($func)) {
+            return $func($id, $params);
         }
         return '';
     }
-
-
 }
