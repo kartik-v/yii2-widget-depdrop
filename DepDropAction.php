@@ -16,7 +16,7 @@ use yii\web\Response;
 
 /**
  * Dependent Dropdown action that can be used to generate the dependent option values via ajax response. A typical
- * usage of this action in your controller could look like the below:
+ * usage of this action in your controller could look like below:
  *
  * ```php
  *
@@ -30,24 +30,24 @@ use yii\web\Response;
  *                'outputCallback' => function ($selectedId, $params) {
  *                    return [
  *                        [
- *                            'id'=>1,
- *                            'name'=>'Car',
+ *                            'id' => 1,
+ *                            'name' => 'Car',
  *                        ],
  *                        [
- *                            'id'=>2,
- *                            'name'=>'bike',
+ *                            'id' => 2,
+ *                            'name' => 'bike',
  *                        ],
  *                    ];
  *
  *                    // with optgroup
  *                    return [
- *                        'group1'=>[
- *                            ['id'=>'<sub-cat-id-1>', 'name'=>'<sub-cat-name1>'],
- *                            ['id'=>'<sub-cat_id_2>', 'name'=>'<sub-cat-name2>']
+ *                        'group1' => [
+ *                            ['id' => '<sub-cat-id-1>', 'name' => '<sub-cat-name1>'],
+ *                            ['id' => '<sub-cat_id_2>', 'name' => '<sub-cat-name2>']
  *                        ],
- *                        'group2'=>[
- *                            ['id'=>'<sub-cat-id-3>', 'name'=>'<sub-cat-name3>'],
- *                            ['id'=>'<sub-cat-id-4>', 'name'=>'<sub-cat-name4>']
+ *                        'group2' => [
+ *                            ['id' => '<sub-cat-id-3>', 'name' => '<sub-cat-name3>'],
+ *                            ['id' => '<sub-cat-id-4>', 'name' => '<sub-cat-name4>']
  *                        ]
  *                    ];
  *                }
