@@ -1,6 +1,12 @@
 Change Log: `yii2-widget-depdrop`
 =================================
 
+## Version 1.0.4
+
+**Date:** 10-Jan-2016
+
+- Enhancements for PJAX based reinitialization. Complements enhancements in kartik-v/yii2-krajee-base#52 and kartik-v/yii2-krajee-base#53.
+
 ## version 1.0.3
 
 **Date:** 16-Dec-2015

@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2015
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
  * @package yii2-widgets
  * @subpackage yii2-widget-depdrop
- * @version 1.0.3
+ * @version 1.0.4
  */
 
 namespace kartik\depdrop;
@@ -60,7 +60,7 @@ use yii\web\Response;
  * @see http://github.com/kartik-v/dependent-dropdown
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0.3
+ * @since 1.0.4
  *
  */
 class DepDropAction extends Action

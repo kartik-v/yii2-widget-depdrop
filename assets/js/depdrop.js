@@ -1,8 +1,8 @@
 /*!
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
  * @package yii2-widgets
  * @subpackage yii2-widget-depdrop
- * @version 1.0.3
+ * @version 1.0.4
  *
  * Extensions to dependent dropdown for Yii:
  * - Initializes dependent dropdown for Select2 widget
