@@ -69,8 +69,8 @@ class DepDrop extends InputWidget
         if ($this->type === self::TYPE_SELECT2) {
             Config::checkDependency('select2\Select2', 'yii2-widget-select2', 'for dependent dropdown for Select2');
         }
-        if ($this->type !== self::TYPE_SELECT2 && !empty($this->options['placeholder'])) {
-            $this->data = ['' => $this->options['placeholder']] + $this->data;
+        if ($this->type !== self::TYPE_SELECT2 && !empty($this->pluginOptions['placeholder'])) {
+            $this->data = ['' => $this->pluginOptions['placeholder']] + $this->data;
         }
         $this->registerAssets();
     }
