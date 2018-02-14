@@ -86,13 +86,18 @@ class DepDropAction extends Action
     public $selectedCallback;
 
     /**
+     * @var bool whether selected value can be empty. Defaults to false,
+     */
+    public $allowEmpty = false;
+
+    /**
      * @inheritdoc
      */
     public function run()
     {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $request = Yii::$app->getRequest();
-        if (($selected = $request->post($this->parentParam)) && is_array($selected) && !empty($selected[0])) {
+        if (($selected = $request->post($this->parentParam)) && is_array($selected) && (!empty($selected[0]) || $this->allowEmpty)) {
             $params = $request->post($this->otherParam, []);
             $id = $selected[0];
             return ['output' => $this->getOutput($id, $params), 'selected' => $this->getSelected($id, $params)];
@@ -104,7 +109,7 @@ class DepDropAction extends Action
      * Return select option values output
      *
      * @param string $id the selected value identifier
-     * @param array  $params the parameters passed
+     * @param array $params the parameters passed
      *
      * @return mixed the option values
      */
@@ -117,7 +122,7 @@ class DepDropAction extends Action
      * Return selected value
      *
      * @param string $id the selected value identifier
-     * @param array  $params the parameters passed
+     * @param array $params the parameters passed
      *
      * @return string the selected value
      */
@@ -131,7 +136,7 @@ class DepDropAction extends Action
      *
      * @param string $funcName the function name
      * @param string $id the selected value identifier
-     * @param array  $params the parameters passed
+     * @param array $params the parameters passed
      *
      * @return mixed the parsed value
      */
