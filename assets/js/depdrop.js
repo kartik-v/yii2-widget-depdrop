@@ -15,12 +15,12 @@ var initDepdropS2;
     "use strict";
     initDepdropS2 = function (id, text) {
         var $s2 = $('#' + id), $s2cont = $('#select2-' + id + '-container'), ph = '...';
-        $s2.on('depdrop.beforeChange', function () {
+        $s2.on('depdrop:beforeChange', function () {
             $s2.find('option').attr('value', ph).html(text);
             $s2.val(ph);
             $s2.select2('val', ph);
             $s2cont.removeClass('kv-loading').addClass('kv-loading');
-        }).on('depdrop.afterChange', function () {
+        }).on('depdrop:afterChange', function () {
             $s2.trigger('change');
             $s2cont.removeClass('kv-loading');
         });
