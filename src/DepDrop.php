@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2016
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
  * @package yii2-widgets
  * @subpackage yii2-widget-depdrop
- * @version 1.0.4
+ * @version 1.0.5
  */
 
 namespace kartik\depdrop;
@@ -24,11 +24,18 @@ use yii\base\InvalidConfigException;
  * @see http://plugins.krajee.com/dependent-dropdown
  * @see http://github.com/kartik-v/dependent-dropdown
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0.4
+ * @since 1.0.5
  */
 class DepDrop extends InputWidget
 {
+    /**
+     * @var string the default native select input dropdown style
+     */
     const TYPE_DEFAULT = 1;
+    
+    /**
+     * @var string the enhanced Select2 widget dropdown style
+     */
     const TYPE_SELECT2 = 2;
 
     /**

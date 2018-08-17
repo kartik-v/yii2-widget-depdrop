@@ -1,6 +1,15 @@
 Change Log: `yii2-widget-depdrop`
 =================================
 
+## Version 1.0.5
+
+**Date:** 17-Aug-2018
+
+- Add Bootstrap 4.x support.
+- Reorganize all source code in `src` directory.
+- Add github contribution and issue/PR log templates.
+- Update copyright year to current.
+
 ## Version 1.0.4
 
 **Date:** 10-Jan-2016

@@ -1,7 +1,8 @@
 yii2-widget-depdrop
 ===================
 
-[![Latest Stable Version](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/v/stable)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
+[![Stable Version](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/v/stable)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
+[![Unstable Version](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/v/unstable)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
 [![License](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/license)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
 [![Total Downloads](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/downloads)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
 [![Monthly Downloads](https://poser.pugx.org/kartik-v/yii2-widget-depdrop/d/monthly)](https://packagist.org/packages/kartik-v/yii2-widget-depdrop)
@@ -29,9 +30,9 @@ or add
 
 to the ```require``` section of your `composer.json` file.
 
-## Latest Release
+## Release Changes
 
-> NOTE: The latest version of the module is v1.0.4. Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widget-depdrop/blob/master/CHANGE.md) for details.
+> NOTE: Refer the [CHANGE LOG](https://github.com/kartik-v/yii2-widget-depdrop/blob/master/CHANGE.md) for details on changes to various releases.
 
 ## Demo
 
