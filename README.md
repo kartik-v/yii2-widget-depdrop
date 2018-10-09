@@ -59,4 +59,4 @@ echo $form->field($model, 'subcat')->widget(DepDrop::classname(), [
 
 ## License
 
-**yii2-widget-depdrop** is released under the BSD 3-Clause License. See the bundled `LICENSE.md` for details.
+**yii2-widget-depdrop** is released under the BSD-3-Clause License. See the bundled `LICENSE.md` for details.
