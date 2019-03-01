@@ -86,9 +86,25 @@ class DepDropAction extends Action
     public $selectedCallback;
 
     /**
-     * @var bool whether selected value can be empty. Defaults to false,
+     * @var bool whether selected value can be empty. Default to false
      */
     public $allowEmpty = false;
+
+    /**
+     * @var bool disable controller csrf validation. Default to true
+     * @since 1.0.6
+     */
+    public $disableControllerCsrfValidation = true;
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+
+        $this->controller->enableCsrfValidation = !$this->disableControllerCsrfValidation;
+    }
 
     /**
      * @inheritdoc
