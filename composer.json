@@ -22,7 +22,7 @@
         }
     ],
     "require": {
-        "kartik-v/yii2-krajee-base": "~1.9",
+        "kartik-v/yii2-krajee-base": "dev-master",
         "kartik-v/dependent-dropdown": "~1.4"
     },
     "autoload": {
