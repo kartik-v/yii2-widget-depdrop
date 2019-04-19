@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
  * @package yii2-widgets
  * @subpackage yii2-widget-depdrop
- * @version 1.0.5
+ * @version 1.0.6
  */
 
 namespace kartik\depdrop;
@@ -60,7 +60,7 @@ use yii\web\Response;
  * @see http://github.com/kartik-v/dependent-dropdown
  *
  * @author Kartik Visweswaran <kartikv2@gmail.com>
- * @since 1.0.5
+ * @since 1.0.6
  *
  */
 class DepDropAction extends Action
@@ -86,9 +86,23 @@ class DepDropAction extends Action
     public $selectedCallback;
 
     /**
-     * @var bool whether selected value can be empty. Defaults to false,
+     * @var bool whether selected value can be empty. Defaults to `false`.
      */
     public $allowEmpty = false;
+
+    /**
+     * @var bool whether CSRF validation is enabled for this action. Defaults to `true`.
+     */
+    public $enableCsrfValidation = true;
+
+    /**
+     * @inheritdoc
+     */
+    public function init()
+    {
+        parent::init();
+        $this->controller->enableCsrfValidation = $this->enableCsrfValidation;
+    }
 
     /**
      * @inheritdoc

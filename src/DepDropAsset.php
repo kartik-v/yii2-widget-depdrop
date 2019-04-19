@@ -1,10 +1,10 @@
 <?php
 
 /**
- * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2018
+ * @copyright Copyright &copy; Kartik Visweswaran, Krajee.com, 2014 - 2019
  * @package yii2-widgets
  * @subpackage yii2-widget-depdrop
- * @version 1.0.5
+ * @version 1.0.6
  */
 
 namespace kartik\depdrop;
