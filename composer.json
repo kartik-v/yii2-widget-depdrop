@@ -21,6 +21,12 @@
             "homepage": "http://www.krajee.com/"
         }
     ],
+    "repositories": [
+		{
+			"type": "git",
+			"url": "https://github.com/diginova/dependent-dropdown.git"
+		}
+	],
     "require": {
         "kartik-v/yii2-krajee-base": ">=2.0.0",
         "kartik-v/dependent-dropdown": "~1.4"
